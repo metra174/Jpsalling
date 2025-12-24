@@ -27,19 +27,19 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "3",
-    name: "Moschino Toy Boy",
-    brand: "Moschino",
-    price: 55000,
+    name: "Vanilla Zara",
+    brand: "Zara",
+    price: 40000,
     category: "Perfumaria",
     image: "https://i.imgur.com/ErSD5U2.jpg",
-    description: "Fragrância premium para homens sofisticados.",
+    description: "Fragrância suave e sofisticada da Zara.",
     stock: true
   },
   {
     id: "4",
     name: "Mocassim Zara Leather",
     brand: "Zara",
-    price: 110000,
+    price: 100000,
     category: "Calçados",
     image: "https://i.imgur.com/iLfOYX1.jpg",
     description: "Couro legítimo com acabamento artesanal.",
@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "5",
-    name: "Vestido Zara Concept",
+    name: "Sandália Zara Concept",
     brand: "Zara",
     price: 85000,
     category: "Feminino",
@@ -57,9 +57,9 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "6",
-    name: "Zara Night Perfume",
+    name: "Zara Night",
     brand: "Zara",
-    price: 55000,
+    price: 65000,
     category: "Perfumaria",
     image: "https://i.imgur.com/dp4gLob.jpg",
     description: "Fragrância exclusiva para noites marcantes.",
@@ -67,19 +67,19 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "7",
-    name: "Conjunto Moderno Mango",
+    name: "Chinelos Moderno Mango",
     brand: "Mango",
-    price: 95000,
+    price: 65000,
     category: "Feminino",
     image: "https://i.imgur.com/i2WLRaX.jpg",
-    description: "Design contemporâneo para a mulher moderna.",
+    description: "Conforto e design para momentos casuais.",
     stock: true
   },
   {
     id: "8",
     name: "Bolsa Premium Zara",
     brand: "Zara",
-    price: 125000,
+    price: 100000,
     category: "Acessórios",
     image: "https://i.imgur.com/ARUTc6Y.jpg",
     description: "O toque final perfeito para seu look.",
@@ -88,7 +88,7 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const GALLERY_IMAGES = [
-  "https://i.imgur.com/777U49z.jpg", // New Hero
+  "https://i.imgur.com/777U49z.jpg",
   "https://i.imgur.com/QL6biUt.jpg",
   "https://i.imgur.com/J1CU4aJ.jpg",
   "https://i.imgur.com/p6UX77r.jpg",
