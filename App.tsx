@@ -8,12 +8,14 @@ import About from './components/About';
 import Gallery from './components/Gallery';
 import Location from './components/Location';
 import Footer from './components/Footer';
+import ImageModal from './components/ImageModal';
 import { Product, CartItem } from './types';
 import { PRODUCTS, WHATSAPP_NUMBER } from './constants';
 
 const App: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const addToCart = useCallback((product: Product) => {
     setCart(prevCart => {
@@ -66,7 +68,7 @@ const App: React.FC = () => {
       <Header cartCount={cartCount} onOpenCart={() => setIsCartOpen(true)} />
       
       <main>
-        <Hero />
+        <Hero onPreviewImage={setPreviewImage} />
         
         <section id="novidades" className="py-24 px-4 md:px-10 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
@@ -83,27 +85,22 @@ const App: React.FC = () => {
           
           <div id="masculino" className="mb-20">
              <h3 className="text-xl font-bold font-serif mb-8 border-l-4 border-amber-600 pl-4">Moda Masculina</h3>
-             <ProductGrid products={filteredProducts('Masculino')} onAddToCart={addToCart} />
+             <ProductGrid products={filteredProducts('Masculino')} onAddToCart={addToCart} onPreview={setPreviewImage} />
           </div>
 
           <div id="feminino" className="mb-20">
              <h3 className="text-xl font-bold font-serif mb-8 border-l-4 border-amber-600 pl-4">Moda Feminina</h3>
-             <ProductGrid products={filteredProducts('Feminino')} onAddToCart={addToCart} />
+             <ProductGrid products={filteredProducts('Feminino')} onAddToCart={addToCart} onPreview={setPreviewImage} />
           </div>
 
           <div id="perfumaria" className="mb-20">
              <h3 className="text-xl font-bold font-serif mb-8 border-l-4 border-amber-600 pl-4">Perfumaria & Fragrâncias</h3>
-             <ProductGrid products={filteredProducts('Perfumaria')} onAddToCart={addToCart} />
-          </div>
-
-          <div id="calcados" className="mb-20">
-             <h3 className="text-xl font-bold font-serif mb-8 border-l-4 border-amber-600 pl-4">Calçados & Acessórios</h3>
-             <ProductGrid products={filteredProducts('Calçados').concat(filteredProducts('Acessórios'))} onAddToCart={addToCart} />
+             <ProductGrid products={filteredProducts('Perfumaria')} onAddToCart={addToCart} onPreview={setPreviewImage} />
           </div>
         </section>
 
-        <About />
-        <Gallery />
+        <About onPreview={setPreviewImage} />
+        <Gallery onPreview={setPreviewImage} />
         <Location />
       </main>
 
@@ -117,6 +114,11 @@ const App: React.FC = () => {
         onUpdateQty={updateQuantity}
         onCheckout={handleCheckout}
         total={totalPrice}
+      />
+
+      <ImageModal 
+        imageUrl={previewImage} 
+        onClose={() => setPreviewImage(null)} 
       />
     </div>
   );

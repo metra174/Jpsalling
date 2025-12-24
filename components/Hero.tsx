@@ -1,71 +1,87 @@
 
 import React from 'react';
-import { INSTAGRAM_URL } from '../constants';
+import { INSTAGRAM_URL, GALLERY_IMAGES } from '../constants';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onPreviewImage: (url: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onPreviewImage }) => {
   return (
-    <section className="relative h-[95vh] md:h-screen w-full flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative h-screen w-full flex items-center overflow-hidden">
+      {/* Background Image Container */}
+      <div 
+        className="absolute inset-0 z-0 cursor-zoom-in"
+        onClick={() => onPreviewImage(GALLERY_IMAGES[0])}
+      >
         <img 
-          src="https://i.imgur.com/yHBWTmv.jpg" 
-          alt="Jpsalling Hero" 
-          className="w-full h-full object-cover brightness-[0.7]"
+          src={GALLERY_IMAGES[0]} 
+          alt="Jpsalling Luxury Collection" 
+          className="w-full h-full object-cover brightness-[0.6] scale-100 animate-[subtle-zoom_20s_infinite_alternate]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 w-full text-white mt-20">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 bg-amber-600/20 border border-amber-600/30 backdrop-blur-md text-amber-500 text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 mb-8 rounded-full">
-            <span className="w-2 h-2 bg-amber-600 rounded-full animate-pulse"></span>
-            Marcas Premium Originais
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 w-full text-white pointer-events-none">
+        <div className="max-w-4xl pointer-events-auto">
+          <div className="flex items-center gap-3 mb-8 animate-fade-in">
+            <span className="h-[1px] w-12 bg-amber-500"></span>
+            <span className="text-amber-500 text-xs font-bold uppercase tracking-[0.4em]">Estilo Global em Luanda</span>
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-[1.05] drop-shadow-2xl">
-            Estilo, Presença e <br />
-            <span className="text-amber-500 italic">Sofisticação</span> <br />
-            em Luanda.
+          
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold mb-8 leading-[0.9] tracking-tighter drop-shadow-2xl">
+            Estilo, <br />
+            Presença & <br />
+            <span className="text-amber-500 italic">Sofisticação.</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-xl leading-relaxed">
-            Explore nossa coleção exclusiva de roupas, calçados e fragrâncias premium das marcas mais desejadas do mundo. Zara, Mango e Moschino ao seu alcance.
+          
+          <p className="text-lg md:text-2xl text-gray-200 mb-12 font-light max-w-2xl leading-relaxed drop-shadow-md">
+            Explore nossa curadoria premium de marcas internacionais. 
+            Zara, Mango e Moschino prontas para você brilhar.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          
+          <div className="flex flex-col sm:flex-row gap-6">
             <a 
               href="#novidades"
-              className="bg-white text-black px-12 py-5 font-bold uppercase text-xs tracking-[0.2em] hover:bg-amber-600 hover:text-white transition-all text-center shadow-xl hover:shadow-amber-600/20"
+              className="bg-amber-600 text-white px-14 py-6 font-bold uppercase text-[11px] tracking-[0.3em] hover:bg-white hover:text-black transition-all text-center shadow-2xl active:scale-95"
             >
-              Ver Coleção
+              Explorar Coleção
             </a>
             <a 
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-white/80 backdrop-blur-sm text-white px-12 py-5 font-bold uppercase text-xs tracking-[0.2em] hover:bg-white hover:text-black transition-all text-center"
+              className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-14 py-6 font-bold uppercase text-[11px] tracking-[0.3em] hover:bg-white hover:text-black transition-all text-center active:scale-95"
             >
-              Instagram
+              Seguir no Instagram
             </a>
           </div>
         </div>
       </div>
 
-      {/* Social Proof */}
-      <div className="absolute bottom-12 left-4 md:left-10 z-10 hidden sm:flex items-center gap-6">
-        <div className="flex -space-x-4">
-          {[1,2,3,4,5].map(i => (
-            <img 
-              key={i} 
-              src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 123}`} 
-              className="w-12 h-12 rounded-full border-2 border-black bg-gray-800 p-0.5" 
-              alt="User"
-            />
-          ))}
-        </div>
-        <div className="text-white">
-          <p className="text-sm font-bold leading-tight">Mais de 10.000</p>
-          <p className="text-[10px] uppercase tracking-widest text-gray-400">Seguidores no Instagram</p>
+      {/* Stats Overlay */}
+      <div className="absolute bottom-12 right-10 hidden lg:block text-right">
+        <div className="flex flex-col items-end border-r-4 border-amber-600 pr-6">
+          <span className="text-4xl font-serif font-bold text-white leading-none">+10K</span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 mt-2">Seguidores Fiel</span>
         </div>
       </div>
+
+      <style>{`
+        @keyframes subtle-zoom {
+          from { transform: scale(1); }
+          to { transform: scale(1.08); }
+        }
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };

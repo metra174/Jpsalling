@@ -88,14 +88,14 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const GALLERY_IMAGES = [
-  "https://i.imgur.com/yHBWTmv.jpg",
-  "https://i.imgur.com/vkj10mc.jpg",
-  "https://i.imgur.com/yQttyk5.jpg",
-  "https://i.imgur.com/ZQd8QST.jpg",
-  "https://i.imgur.com/mfJoeQu.jpg",
-  "https://i.imgur.com/H4kSqN2.jpg",
-  "https://i.imgur.com/p6UX77r.jpg",
+  "https://i.imgur.com/777U49z.jpg", // New Hero
   "https://i.imgur.com/QL6biUt.jpg",
   "https://i.imgur.com/J1CU4aJ.jpg",
-  "https://i.imgur.com/777U49z.jpg"
+  "https://i.imgur.com/p6UX77r.jpg",
+  "https://i.imgur.com/H4kSqN2.jpg",
+  "https://i.imgur.com/mfJoeQu.jpg",
+  "https://i.imgur.com/ZQd8QST.jpg",
+  "https://i.imgur.com/yQttyk5.jpg",
+  "https://i.imgur.com/vkj10mc.jpg",
+  "https://i.imgur.com/yHBWTmv.jpg"
 ];

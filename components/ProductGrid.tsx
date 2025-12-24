@@ -5,12 +5,13 @@ import { Product } from '../types';
 interface ProductGridProps {
   products: Product[];
   onAddToCart: (p: Product) => void;
+  onPreview: (url: string) => void;
 }
 
-const ProductCard: React.FC<{ product: Product, onAdd: (p: Product) => void }> = ({ product, onAdd }) => {
+const ProductCard: React.FC<{ product: Product, onAdd: (p: Product) => void, onPreview: (url: string) => void }> = ({ product, onAdd, onPreview }) => {
   return (
     <div className="group flex flex-col h-full bg-white transition-all duration-500">
-      <div className="relative overflow-hidden aspect-[3/4] mb-5 bg-gray-50 border border-gray-100">
+      <div className="relative overflow-hidden aspect-[3/4] mb-5 bg-gray-50 border border-gray-100 cursor-zoom-in" onClick={() => onPreview(product.image)}>
         <img 
           src={product.image} 
           alt={product.name} 
@@ -33,8 +34,11 @@ const ProductCard: React.FC<{ product: Product, onAdd: (p: Product) => void }> =
         {/* Quick Add Overlay */}
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-0">
           <button 
-            onClick={() => onAdd(product)}
-            className="w-full bg-black text-white py-5 text-[10px] font-bold uppercase tracking-[0.3em] transform translate-y-full group-hover:translate-y-0 transition-all duration-500 hover:bg-amber-600 active:bg-amber-700"
+            onClick={(e) => {
+              e.stopPropagation();
+              onAdd(product);
+            }}
+            className="w-full bg-black text-white py-5 text-[10px] font-bold uppercase tracking-[0.3em] transform translate-y-full group-hover:translate-y-0 transition-all duration-500 hover:bg-amber-600 active:bg-amber-700 pointer-events-auto"
           >
             Adicionar ao Carrinho
           </button>
@@ -58,13 +62,13 @@ const ProductCard: React.FC<{ product: Product, onAdd: (p: Product) => void }> =
   );
 };
 
-const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, onPreview }) => {
   if (products.length === 0) return null;
   
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-16">
       {products.map(product => (
-        <ProductCard key={product.id} product={product} onAdd={onAddToCart} />
+        <ProductCard key={product.id} product={product} onAdd={onAddToCart} onPreview={onPreview} />
       ))}
     </div>
   );
